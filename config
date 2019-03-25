@@ -55,7 +55,7 @@ client.unfocused        #333333 #424242 #888888 #292d2e
 client.urgent           #C10004 #900000 #ffffff #900000
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+#bindsym $mod+space exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -200,3 +200,10 @@ gaps outer 0
 smart_gaps on
 bindsym $mod+Prior gaps inner current plus 2
 bindsym $mod+Next gaps inner current minus 2
+
+# Rofi
+bindsym $mod+Tab exec rofi -show window
+set $execute exec rofi -show drun -eh 2 -padding 16
+bindsym $mod+space $execute
+bindsym XF86Search $execute
+bindsym $mod+shift+d exec rofi -show run -eh 2 -padding 16
