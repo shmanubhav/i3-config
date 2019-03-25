@@ -63,10 +63,10 @@ bindsym $mod+space exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -114,8 +114,8 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
+set $ws1 " "
+set $ws2 ""
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -194,7 +194,8 @@ bar {
 }
 bindsym Prior exec --no-startup-id pactl -- set-sink-volume 1 +2% #increase sound volume
 bindsym Next exec --no-startup-id pactl -- set-sink-volume 1 -2% #decrease sound volume
-
+bindsym $mod+l exec --no-startup-id betterlockscreen -l dimblur -t "Who are you?"
+exec xautolock -time 1 -locker 'betterlockscreen -l dimblur -t "Who are you?"' &
 # Pulse Audio controls
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 1 +2% #increase sound volume
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 1 -2% #decrease sound volume
