@@ -188,11 +188,11 @@ exec xautolock -time 5 -locker 'betterlockscreen -l dimblur -t "Who are you?"' &
 
 # Pulse Audio controls
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 5 toggle # mute sound
-bindsym Prior exec --no-startup-id pactl -- set-sink-volume 5 +2% #increase sound volume
-bindsym Next exec --no-startup-id pactl -- set-sink-volume 5 -2% #decrease sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 5 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 5 -2% #decrease sound volume
-
+bindsym Prior exec --no-startup-id pactl -- set-sink-volume 8 +2% #increase sound volume
+bindsym Next exec --no-startup-id pactl -- set-sink-volume 8 -2% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 8 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 8 -2% #decrease sound volume
+bindsym $mod+b exec /home/anubhav/.config/i3/set_sink.sh
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
