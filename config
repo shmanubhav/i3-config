@@ -30,11 +30,12 @@ font pango:Terminus 9
 floating_modifier $mod
 
 ## Fix monitor outs
-exec --no-startup-id xrandr --output DisplayPort0 --auto --left-of HDMI-A-0 --auto
+#exec --no-startup-id xrandr | grep "HDMI1 connected" | xrandr --output LVDS1 --auto --output HDMI1 --auto --above LVDS1
+exec --no-startup-id xrandr | grep "HDMI1 connected" | xrandr --output LVDS1 --auto --output HDMI1 --auto --left-of LVDS1
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id compton
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -55,7 +56,7 @@ client.unfocused        #333333 #424242 #888888 #292d2e
 client.urgent           #C10004 #900000 #ffffff #900000
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+#bindsym $mod+space exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -82,6 +83,10 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# Screen Shots
+bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
+bindsym Control+P exec gnome-screenshot -i
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -98,8 +103,8 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 " "
-set $ws2 ""
+set $ws2 " "
+set $ws1 ""
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -179,14 +184,14 @@ bar {
 
 # Lockscreen
 bindsym $mod+l exec --no-startup-id betterlockscreen -l dimblur -t "Who are you?"
-exec xautolock -time 1 -locker 'betterlockscreen -l dimblur -t "Who are you?"' &
+exec xautolock -time 5 -locker 'betterlockscreen -l dimblur -t "Who are you?"' &
 
 # Pulse Audio controls
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 1 +2% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 1 -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
-bindsym Prior exec --no-startup-id pactl -- set-sink-volume 1 +2% #increase sound volume
-bindsym Next exec --no-startup-id pactl -- set-sink-volume 1 -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 5 toggle # mute sound
+bindsym Prior exec --no-startup-id pactl -- set-sink-volume 5 +2% #increase sound volume
+bindsym Next exec --no-startup-id pactl -- set-sink-volume 5 -2% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 5 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 5 -2% #decrease sound volume
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -200,3 +205,14 @@ gaps outer 0
 smart_gaps on
 bindsym $mod+Prior gaps inner current plus 2
 bindsym $mod+Next gaps inner current minus 2
+
+# Rofi
+bindsym $mod+Tab exec rofi -show window
+set $execute exec rofi -show drun -eh 2 -padding 16
+bindsym $mod+space $execute
+bindsym XF86Search $execute
+bindsym $mod+shift+d exec rofi -show run -eh 2 -padding 16
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
