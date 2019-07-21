@@ -31,7 +31,7 @@ floating_modifier $mod
 
 ## Fix monitor outs
 #exec --no-startup-id xrandr | grep "HDMI1 connected" | xrandr --output LVDS1 --auto --output HDMI1 --auto --above LVDS1
-exec --no-startup-id xrandr | grep "HDMI1 connected" | xrandr --output LVDS1 --auto --output HDMI1 --auto --left-of LVDS1
+exec --no-startup-id xrandr | grep "HDMI-A-0 connected" | xrandr --output DisplayPort-0 --auto --output HDMI-A-0 --auto --right-of DisplayPort-0
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id compton
 # start a terminal
@@ -188,11 +188,11 @@ exec xautolock -time 5 -locker 'betterlockscreen -l dimblur -t "Who are you?"' &
 
 # Pulse Audio controls
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 5 toggle # mute sound
-bindsym Prior exec --no-startup-id pactl -- set-sink-volume 8 +2% #increase sound volume
-bindsym Next exec --no-startup-id pactl -- set-sink-volume 8 -2% #decrease sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 8 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 8 -2% #decrease sound volume
-bindsym $mod+b exec /home/anubhav/.config/i3/set_sink.sh
+bindsym Prior exec --no-startup-id pactl -- set-sink-volume 2 +2% #increase sound volume
+bindsym Next exec --no-startup-id pactl -- set-sink-volume 2 -2% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 2 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 2 -2% #decrease sound volume
+bindsym $mod+b exec /home/starbriganza/.config/i3/set_sink.sh
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
