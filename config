@@ -179,15 +179,15 @@ bar {
 }
 
 # Lockscreen
-bindsym $mod+l exec --no-startup-id betterlockscreen -l dimblur -t "Who are you?"
+bindsym $mod+l exec --no-startup-id betterlockscreen -l dim -t "Who are you?"
 exec xautolock -time 8 -locker 'betterlockscreen -l dimblur -t "Who are you?"' &
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym Prior exec --no-startup-id pactl -- set-sink-volume 0 +2% #increase sound volume
-bindsym Next exec --no-startup-id pactl -- set-sink-volume 0 -2% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 2 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 2 -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
+bindsym Prior exec --no-startup-id pactl -- set-sink-volume 2 +2% #increase sound volume
+bindsym Next exec --no-startup-id pactl -- set-sink-volume 2 -2% #decrease sound volume
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
